@@ -1,0 +1,36 @@
+def tally(m):
+    qwe = {}
+    for letter in m:
+        if letter in qwe:
+           qwe.update({letter:qwe.get(letter)+1})
+        else:
+           qwe.update({letter:1})
+    for key in sorted(qwe.keys()):
+        print (key, '=', qwe[key],end="; ")
+    print('')
+alfabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяабвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+text = input("Введите текст: ")
+key = 4
+text = text.lower()
+returnText = ""
+newText = ""
+for letter in text:
+    place = alfabet.find(letter)
+    replace = place + key
+    if letter in alfabet:
+     newText = newText + alfabet[replace]
+    else:
+     newText = newText + letter
+print("Шифр: ", newText)
+for letter in newText:
+    place = alfabet.find(letter)
+    replace = place - key
+    if letter in alfabet:
+     returnText += alfabet[replace]
+    else:
+     returnText += letter
+print("Расшифровка: ",returnText)
+print("символы в изначальном тексте:")
+tally(text)
+print("символы в зашифрованном тексте:")
+tally(newText)
